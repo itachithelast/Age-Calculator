@@ -8,11 +8,36 @@ const btnMonth = document.querySelector("#month");
 const btnToday = document.querySelector("#btn-today");
 const btnClear = document.querySelector("#btn-clear");
 const tableTd = document.querySelectorAll("td");
+const input = document.querySelector("#input")
 
 btnMonth.addEventListener("change", updateDays);
 btnYear.addEventListener("change", updateDays);
 btnLeft.addEventListener("click", prevMonth);
 btnRight.addEventListener("click", nextMonth);
+btnClear.addEventListener("click",clear)
+btnToday.addEventListener("click",setToday)
+calendarBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const classes = calendar.classList;
+    if (classes.contains("hidden")) {
+      classes.remove("hidden");
+      loadCalendar();
+    } else {
+      classes.add("hidden");
+    }
+  });
+
+function setToday(){
+    input.value = DateTime.now().toFormat('dd-MM-yyyy')
+    const classes = calendar.classList;
+    classes.add("hidden")
+}
+
+function clear(){
+    btnYear.selectedIndex = 0
+    btnMonth.selectedIndex = 0
+    input.value = ''
+}
 
 function nextMonth() {
   let month = Number(btnMonth.value) + 1;
@@ -80,13 +105,4 @@ function loadDays(year, month) {
     }
   }
 }
-calendarBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  const classes = calendar.classList;
-  if (classes.contains("hidden")) {
-    classes.remove("hidden");
-    loadCalendar();
-  } else {
-    classes.add("hidden");
-  }
-});
+
