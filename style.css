@@ -11,7 +11,7 @@ form{
 .date-picker {
   position: absolute;
   top: 30%;
-  left: 30%;
+  left: 37%;
 }
 .date-picker input {
 padding: 10px;
@@ -94,4 +94,15 @@ select{
   appearance: none;
   font-size: 16px;
   font-weight: bold;
+}
+.calcul{
+  font-size: 20px;
+  padding: 10px 15px;
+  margin: 10px;
+  border: 1px solid black !important;
+  background-color: gold !important;
+  border-radius: 20px;
+}
+h1{
+  margin-bottom: 40px;
 }
