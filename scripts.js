@@ -16,19 +16,24 @@ btnRight.addEventListener("click", nextMonth);
 
 function nextMonth() {
   let month = Number(btnMonth.value) + 1;
-  month = month > 12 ? month - 12 : month
+  if (month == 13) {
+    month =  1;
+    const year = Number(btnYear.value) + 1;
+    btnYear.innerHTML += `<option value="${year}">${year}</option>`;
+    btnYear.value = year;
+  }
   btnMonth.value = month;
   updateDays();
 }
 function prevMonth() {
-    let month = Number(btnMonth.value) - 1;
-    if(!month){
-        month = 12
-        const year = Number(btnYear.value) - 1;
-        btnYear.value = year
-    }
-    btnMonth.value = month;
-    updateDays()
+  let month = Number(btnMonth.value) - 1;
+  if (!month) {
+    month = 12;
+    const year = Number(btnYear.value) - 1;
+    btnYear.value = year;
+  }
+  btnMonth.value = month;
+  updateDays();
 }
 
 function updateDays() {
@@ -58,23 +63,22 @@ function loadDays(year, month) {
   const daysInMonth = DateTime.local(year, month).daysInMonth;
   let index = DateTime.local(year, month, 1).weekday - 1;
   let j = 1;
-  for (let i = 0 ; i < 35 ; i++){
-    tableTd[i].textContent = ''
+  for (let i = 0; i < 35; i++) {
+    tableTd[i].textContent = "";
   }
-  while (j <= daysInMonth && index<35 ){
-    tableTd[index].textContent = j
-    j++
-    index++
+  while (j <= daysInMonth && index < 35) {
+    tableTd[index].textContent = j;
+    j++;
+    index++;
   }
-  if (tableTd[34].textContent!==j || tableTd[34].textContent!==""){
-    index = 0
-    while (j<=daysInMonth){
-    tableTd[index].textContent = j
-        j++
-        index++
+  if (tableTd[34].textContent !== j || tableTd[34].textContent !== "") {
+    index = 0;
+    while (j <= daysInMonth) {
+      tableTd[index].textContent = j;
+      j++;
+      index++;
     }
   }
-
 }
 calendarBtn.addEventListener("click", (e) => {
   e.preventDefault();
