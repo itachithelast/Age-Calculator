@@ -98,9 +98,9 @@ select{
 .calcul{
   font-size: 20px;
   padding: 10px 15px;
-  margin: 10px;
-  border: 1px solid black !important;
-  background-color: gold !important;
+  margin-top: 40px;
+  border: 1px solid white !important;
+  background-color: #74c0fc !important;
   border-radius: 20px;
 }
 h1{

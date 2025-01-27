@@ -8,8 +8,11 @@ const btnMonth = document.querySelector("#month");
 const btnToday = document.querySelector("#btn-today");
 const btnClear = document.querySelector("#btn-clear");
 const tableTd = document.querySelectorAll("td");
+const table = document.querySelector("table")
 const input = document.querySelector("#input")
 
+
+table.addEventListener("click",(e)=>{takeInp(e)})
 btnMonth.addEventListener("change", updateDays);
 btnYear.addEventListener("change", updateDays);
 btnLeft.addEventListener("click", prevMonth);
@@ -26,6 +29,15 @@ calendarBtn.addEventListener("click", (e) => {
       classes.add("hidden");
     }
   });
+
+  function takeInp(e){
+    if (e.target.textContent){
+      const birthDate = DateTime.local(Number(btnYear.value),Number(btnMonth.value),Number(e.target.textContent)).toFormat("dd-MM-yyyy")
+      input.value = birthDate
+    const classes = calendar.classList;
+    classes.add("hidden");
+    }
+  }
 
 function setToday(){
     input.value = DateTime.now().toFormat('dd-MM-yyyy')
