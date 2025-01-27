@@ -83,6 +83,15 @@ padding: 10px;
 th{
   cursor: default;
 }
-.blue{
+td:hover{
   background: rgb(66, 66, 231);
+  cursor: pointer;
+  color: white;
+}
+select{
+  padding: 8px;
+  border: none;
+  appearance: none;
+  font-size: 16px;
+  font-weight: bold;
 }
