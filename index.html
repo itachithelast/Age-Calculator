@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Picker UI</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/ce928d54e6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h3 class="text-center">Hamed.Devs.co</h3>
+    <h1 class="text-center">Age Calculator App</h1>
+    <div class="date-picker">
+      <p>Enter your birth date:</p>
+      <form>
+        <input type="text" placeholder="dd / mm / yyyy" />
+        <button id="calendar-btn">
+          <i class="fa-solid fa-calendar-days" style="color: #74c0fc"></i>
+        </button>
+      </form>
+      <div class="calendar hidden">
+        <div class="calendar-header">
+          <button id="left"><i class="fa-solid fa-angle-left"></i></button>
+          <span id="month" class="cursor">December</span><span class="cursor" id="year"> 2022</span>
+          <button id="right"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+        <table class="calendar-table">
+          <thead>
+            <tr>
+              <th>M</th>
+              <th>T</th>
+              <th>W</th>
+              <th>T</th>
+              <th>F</th>
+              <th>S</th>
+              <th>S</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>12</td>
+              <td>13</td>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>19</td>
+              <td>20</td>
+              <td>21</td>
+              <td>22</td>
+              <td>23</td>
+              <td>24</td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>26</td>
+              <td>27</td>
+              <td>28</td>
+              <td>29</td>
+              <td>30</td>
+              <td>31</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <button id="btn-today">Today</button>
+          <button id="btn-clear">Clear</button>
+        </div>
+      </div>
+      <div class="output hidden">You have 20 years old</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
