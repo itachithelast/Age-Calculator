@@ -8,53 +8,77 @@ const btnMonth = document.querySelector("#month");
 const btnToday = document.querySelector("#btn-today");
 const btnClear = document.querySelector("#btn-clear");
 const tableTd = document.querySelectorAll("td");
-const table = document.querySelector("table")
-const input = document.querySelector("#input")
+const table = document.querySelector("table");
+const input = document.querySelector("#input");
+const btnCalculate = document.querySelector(".calcul");
 
-
-table.addEventListener("click",(e)=>{takeInp(e)})
+btnCalculate.addEventListener("click", (e) => {calculate(e)});
+table.addEventListener("click", (e) => {
+  takeInp(e);
+});
 btnMonth.addEventListener("change", updateDays);
 btnYear.addEventListener("change", updateDays);
 btnLeft.addEventListener("click", prevMonth);
 btnRight.addEventListener("click", nextMonth);
-btnClear.addEventListener("click",clear)
-btnToday.addEventListener("click",setToday)
+btnClear.addEventListener("click", clear);
+btnToday.addEventListener("click", setToday);
 calendarBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const classes = calendar.classList;
-    if (classes.contains("hidden")) {
-      classes.remove("hidden");
-      loadCalendar();
-    } else {
-      classes.add("hidden");
-    }
-  });
-
-  function takeInp(e){
-    if (e.target.textContent){
-      const birthDate = DateTime.local(Number(btnYear.value),Number(btnMonth.value),Number(e.target.textContent)).toFormat("dd-MM-yyyy")
-      input.value = birthDate
-    const classes = calendar.classList;
+  e.preventDefault();
+  const classes = calendar.classList;
+  if (classes.contains("hidden")) {
+    classes.remove("hidden");
+    loadCalendar();
+  } else {
     classes.add("hidden");
-    }
   }
+});
 
-function setToday(){
-    input.value = DateTime.now().toFormat('dd-MM-yyyy')
-    const classes = calendar.classList;
-    classes.add("hidden")
+function calculate(e) {
+  e.preventDefault();
+if (input.value){
+  try{
+    const bd = DateTime.fromFormat(input.value, "dd-MM-yyyy")
+    const now = DateTime.now()
+    const ageNoFormat = now.diff(bd , ["years",'months','days'])
+    const age = `Age: ${Math.floor(ageNoFormat.years)} years, ${Math.floor(ageNoFormat.months)} months, ${Math.floor(ageNoFormat.days)} days`
+     }catch{
+    alert("wrong date format, try again!")
+    input.value = ''
+  }
+}else{
+  alert("BirthDate have not been entered!!!")
+}
 }
 
-function clear(){
-    btnYear.selectedIndex = 0
-    btnMonth.selectedIndex = 0
-    input.value = ''
+function takeInp(e) {
+  if (e.target.textContent) {
+    const birthDate = DateTime.local(
+      Number(btnYear.value),
+      Number(btnMonth.value),
+      Number(e.target.textContent)
+    ).toFormat("dd-MM-yyyy");
+    input.value = birthDate;
+    const classes = calendar.classList;
+    classes.add("hidden");
+  }
+}
+
+function setToday() {
+  input.value = DateTime.now().toFormat("dd-MM-yyyy");
+  const classes = calendar.classList;
+  classes.add("hidden");
+}
+
+function clear() {
+  btnYear.selectedIndex = 0;
+  btnMonth.selectedIndex = 0;
+  input.value = "";
 }
 
 function nextMonth() {
   let month = Number(btnMonth.value) + 1;
   if (month == 13) {
-    month =  1;
+    month = 1;
     const year = Number(btnYear.value) + 1;
     btnYear.innerHTML += `<option value="${year}">${year}</option>`;
     btnYear.value = year;
@@ -117,4 +141,3 @@ function loadDays(year, month) {
     }
   }
 }
-
