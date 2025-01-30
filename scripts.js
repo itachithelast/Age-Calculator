@@ -11,6 +11,7 @@ const tableTd = document.querySelectorAll("td");
 const table = document.querySelector("table");
 const input = document.querySelector("#input");
 const btnCalculate = document.querySelector(".calcul");
+const output = document.querySelector(".output")
 
 btnCalculate.addEventListener("click", (e) => {calculate(e)});
 table.addEventListener("click", (e) => {
@@ -41,6 +42,7 @@ if (input.value){
     const now = DateTime.now()
     const ageNoFormat = now.diff(bd , ["years",'months','days'])
     const age = `Age: ${Math.floor(ageNoFormat.years)} years, ${Math.floor(ageNoFormat.months)} months, ${Math.floor(ageNoFormat.days)} days`
+    output.innerHTML = `<p>${age}</p>`
      }catch{
     alert("wrong date format, try again!")
     input.value = ''
